@@ -81,7 +81,10 @@ def bootstrap(mass, n_forcast, intervals_in_hour):
     sorted_res_max = np.sort(max_)
     #######################
     high, low = sorted_res_max[9500], sorted_res_min[500]
-    return np.array([high, low])
+    vol = max((high - 1), (1 - low))
+    return np.array([1 + vol, 1 - vol])
+
+    
 def make_new_col(df):
     '''Потребуются относительные изменения'''
     print('Добавляю относительные изменения')
